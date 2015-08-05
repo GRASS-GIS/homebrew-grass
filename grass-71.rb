@@ -47,8 +47,8 @@ class Grass71 < Formula
   depends_on "liblas" => :optional
   depends_on "netcdf" => :optional
   depends_on "ffmpeg" => :optional
-  option "without-nc_spm_08_grass7", "Do not install the North Carolina sample data set. If not installed, the tests will fail!"
-  depends_on "nc_spm_08_grass7" => :recommended
+  option "with-nc_spm_08_grass7", "Do install the North Carolina sample data set. If not installed, the tests will fail!"
+  depends_on "nc_spm_08_grass7" => :optional
 
   def headless?
     # The GRASS GUI is based on WxPython.
