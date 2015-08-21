@@ -47,8 +47,6 @@ class Grass71 < Formula
   depends_on "liblas" => :optional
   depends_on "netcdf" => :optional
   depends_on "ffmpeg" => :optional
-  option "with-nc_spm_08_grass7", "Do install the North Carolina sample data set. If not installed, the tests will fail!"
-  depends_on "nc_spm_08_grass7" => :optional
 
   def headless?
     # The GRASS GUI is based on WxPython.
@@ -160,7 +158,12 @@ class Grass71 < Formula
   end
 
   test do
-    system "grass71 /usr/local/Cellar/nc_spm_08_grass7/grass7_0.8/PERMANENT/ --exec python -m grass.gunittest.main --location 'grass7_0.8' --location-type nc"
+    system "grass71 --version"
+    system "grass71 --config"
+    # system "wget http://grass.osgeo.org/sampledata/north_carolina/nc_basic_spm_grass7.tar.gz"
+    # system "tar xzf ./nc_basic_spm_grass7.tar.gz"
+    # system "ls -l ./nc_basic_spm_grass7/"
+    # system "grass71 ./nc_basic_spm_grass7/PERMANENT --exec python -m grass.gunittest.main --location 'nc_basic_spm_grass7' --location-type nc"
   end
 end
 
