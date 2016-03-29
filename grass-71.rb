@@ -1,28 +1,35 @@
 ## Slightly changed from https://github.com/OSGeo/homebrew-osgeo4mac
 
 class Grass71 < Formula
+  desc "Head only formula for GRASS GIS 7.1"
   homepage "http://grass.osgeo.org/"
-  head 'https://svn.osgeo.org/grass/grass/trunk'
 
   stable do
-##    url "http://grass.osgeo.org/grass71/source/snapshot/grass-7.1.svn_src_snapshot_2015_05_30.tar.gz"
-##    sha1 "a162c38efb64d8e5754a7b66ba34558cd6bf96c4"
-
+    # url "http://grass.osgeo.org/grass71/source/snapshot/grass-7.1.svn_src_snapshot_2015_05_30.tar.gz"
+    # sha1 "a162c38efb64d8e5754a7b66ba34558cd6bf96c4"
     # Patches to keep files from being installed outside of the prefix.
     # Remove lines from Makefile that try to install to /Library/Documentation.
     patch :DATA
   end
 
+  bottle do
+    # root_url "http://qgis.dakotacarto.com/osgeo4mac/bottles"
+    # revision 1
+    # sha1 "139a3b806cd609e7e1ad73d1937a8a0f5b248a94" => :mavericks
+    # sha1 "aa239d5f2c1a6bcc5e460a56fdd0ae341e5b1730" => :yosemite
+  end
+
   head do
+    url "https://svn.osgeo.org/grass/grass/trunk"
     patch :DATA
   end
 
-##  bottle do
-##    root_url "http://qgis.dakotacarto.com/osgeo4mac/bottles"
-##    revision 1
-##    sha1 "139a3b806cd609e7e1ad73d1937a8a0f5b248a94" => :mavericks
-##    sha1 "aa239d5f2c1a6bcc5e460a56fdd0ae341e5b1730" => :yosemite
-##  end
+  bottle do
+    # root_url "http://qgis.dakotacarto.com/osgeo4mac/bottles"
+    # revision 1
+    # sha1 "139a3b806cd609e7e1ad73d1937a8a0f5b248a94" => :mavericks
+    # sha1 "aa239d5f2c1a6bcc5e460a56fdd0ae341e5b1730" => :yosemite
+  end
 
   option "without-gui", "Build without WxPython interface. Command line tools still available."
 
@@ -42,7 +49,7 @@ class Grass71 < Formula
   depends_on :postgresql => :optional
   depends_on :mysql => :optional
   depends_on "cairo"
-  depends_on :x11  # needs to find at least X11/include/GL/gl.h
+  depends_on :x11 # needs to find at least X11/include/GL/gl.h
   depends_on "openblas" => :optional
   depends_on "liblas" => :optional
   depends_on "netcdf" => :optional
@@ -57,7 +64,7 @@ class Grass71 < Formula
     readline = Formula["readline"]
     gettext = Formula["gettext"]
 
-    #noinspection RubyLiteralArrayInspection
+    # noinspection RubyLiteralArrayInspection
     args = [
       "--disable-debug", "--disable-dependency-tracking",
       "--enable-shared",
@@ -130,21 +137,27 @@ class Grass71 < Formula
       args << "--with-ffmpeg"
     end
 
+    if MacOS.version >= :el_capitan
+      # handle stripping of DYLD_* env vars by SIP when passed to utilities;
+      # HOME env var is .brew_home during build, so it is still checked for lib
+      ln_sf "#{buildpath}/dist.x86_64-apple-darwin#{`uname -r`.strip}/lib", ".brew_home/lib"
+    end
+
     system "./configure", "--prefix=#{prefix}", *args
-    system "make GDAL_DYNAMIC=" # make and make install must be separate steps.
-    system "make GDAL_DYNAMIC= install" # GDAL_DYNAMIC set to blank for r.external compatability
+    system "make", "GDAL_DYNAMIC=" # make and make install must be separate steps.
+    system "make", "GDAL_DYNAMIC=", "install" # GDAL_DYNAMIC set to blank for r.external compatability
   end
 
-  def formula_site_packages f
+  def formula_site_packages(f)
     `python -c "import os, sys, site; sp1 = list(sys.path); site.addsitedir('#{Formula[f].opt_lib}/python2.7/site-packages'); print(os.pathsep.join([x for x in sys.path if x not in sp1]))"`.strip
   end
 
   def post_install
     # ensure QGIS's Processing plugin recognizes install
-##    ln_sf "../bin/grass71", prefix/"grass-#{version.to_s}/grass71.sh"
+    # ln_sf "../bin/grass71", prefix/"grass-#{version.to_s}/grass71.sh"
     # link so settings in external apps don't need updated on grass version bump
     # in QGIS Processing options, GRASS folder = HOMEBREW_PREFIX/opt/grass-71/grass-base
-##    ln_sf "grass-#{version.to_s}", prefix/"grass-base"
+    # ln_sf "grass-#{version.to_s}", prefix/"grass-base"
   end
 
   def caveats
@@ -158,12 +171,12 @@ class Grass71 < Formula
   end
 
   test do
-    system "grass71 --version"
-    system "grass71 --config"
-    # system "wget http://grass.osgeo.org/sampledata/north_carolina/nc_basic_spm_grass7.tar.gz"
-    # system "tar xzf ./nc_basic_spm_grass7.tar.gz"
-    # system "ls -l ./nc_basic_spm_grass7/"
-    # system "grass71 ./nc_basic_spm_grass7/PERMANENT --exec python -m grass.gunittest.main --location 'nc_basic_spm_grass7' --location-type nc"
+    system "grass71", "--version"
+    system "grass71", "--config"
+    # system "wget", "http://grass.osgeo.org/sampledata/north_carolina/nc_basic_spm_grass7.tar.gz"
+    # system "tar", "xzf", "./nc_basic_spm_grass7.tar.gz"
+    # system "ls", "-l", "./nc_basic_spm_grass7/"
+    # system "grass71", "./nc_basic_spm_grass7/PERMANENT", "--exec", "python", "-m", "grass.gunittest.main", "--location", "'nc_basic_spm_grass7'", "--location-type nc"
   end
 end
 
