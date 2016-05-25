@@ -1,7 +1,7 @@
 ## Slightly changed from https://github.com/OSGeo/homebrew-osgeo4mac
 
-class Grass71 < Formula
-  desc "Head only formula for GRASS GIS 7.1"
+class GrassTrunk < Formula
+  desc "Head only formula for GRASS GIS trunk"
   homepage "http://grass.osgeo.org/"
 
   stable do
@@ -171,8 +171,8 @@ class Grass71 < Formula
   end
 
   test do
-    system "grass71", "--version"
-    system "grass71", "--config"
+    # system "grass71", "--version"
+    # system "grass71", "--config"
     # system "wget", "http://grass.osgeo.org/sampledata/north_carolina/nc_basic_spm_grass7.tar.gz"
     # system "tar", "xzf", "./nc_basic_spm_grass7.tar.gz"
     # system "ls", "-l", "./nc_basic_spm_grass7/"
