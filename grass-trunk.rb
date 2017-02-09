@@ -20,7 +20,7 @@ class GrassTrunk < Formula
   end
 
   head do
-    url "https://svn.osgeo.org/grass/grass/trunk"
+    url "https://github.com/GRASS-GIS/grass-ci.git"
     patch :DATA
   end
 
