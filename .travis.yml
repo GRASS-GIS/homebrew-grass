@@ -1,0 +1,22 @@
+# Author: Rainer Krug, Rainer@krugs.de
+
+language: objective-c
+
+before_install:
+  - brew update
+
+install:
+  - brew tap grass-gis/grass-dev
+  - brew tap osgeo4mac
+  - brew update
+
+env:
+  - RECIPE=grass-trunk   INSTALLOPTIONS="--HEAD --with-ffmpeg --with-mysql --with-netcdf --with-postgresql --with-openblas --with-liblas"
+
+script:
+  - brew audit -v $RECIPE
+  - brew install $INSTALLOPTIONS $RECIPE
+  - brew test -v $RECIPE
+  - brew info $RECIPE
+  - brew uninstall $RECIPE
+ 
