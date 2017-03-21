@@ -20,9 +20,9 @@ script:
     --with-openblas
     --with-postgresql
     grass-trunk
-  - brew test -v $RECIPE
-  - brew info $RECIPE
-  - brew uninstall $RECIPE
+  - brew test -v grass-trunk
+  - brew info grass-trunk
+  - brew uninstall grass-trunk
 
 notifications:
         email:
