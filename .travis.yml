@@ -12,7 +12,7 @@ install:
 
 script:
 #   - brew audit -v $RECIPE
-  - brew install --HEAD
+  - brew install --HEAD \
     --with-ffmpeg \
     --with-liblas \
     --with-mysql \
