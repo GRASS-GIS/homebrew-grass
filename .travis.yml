@@ -11,7 +11,14 @@ install:
   - brew update
 
 script:
-  - brew install --HEAD --with-ffmpeg --with-liblas --with-mysql --with-netcdf --with-openblas --with-postgresql grass-trunk
+  - brew install --HEAD
+    --with-ffmpeg
+    --with-liblas
+    --with-mysql
+    --with-netcdf
+    --with-openblas
+    --with-postgresql
+    grass-trunk
   - brew test -v $RECIPE
   - brew info $RECIPE
   - brew uninstall $RECIPE
