@@ -10,8 +10,7 @@ before_install:
   - brew update
 
 install:
-  - travis_wait 30 mvn install
-  - brew install --build-from-source gcc
+  - travis_wait 30 brew install --build-from-source gcc
 
 script:
   - brew install --HEAD
