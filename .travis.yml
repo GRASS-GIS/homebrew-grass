@@ -10,8 +10,12 @@ before_install:
   - brew update
 
 install:
-  - travis_wait 30 brew install --build-from-source gcc
-
+##   - travis_wait 60 brew install --build-from-source gcc
+  - brew install gcc
+  
+before_script:
+  - export CXX="g++-6" CC="gcc-6"
+  
 script:
   - brew install --HEAD
     --with-ffmpeg
