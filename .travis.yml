@@ -1,6 +1,7 @@
 # Author: Rainer Krug, Rainer@krugs.de
 
-language: objective-c
+language: minimal
+os: osx
 
 before_install:
   - brew update
