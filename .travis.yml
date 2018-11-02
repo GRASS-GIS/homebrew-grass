@@ -7,7 +7,6 @@ before_install:
   - brew update
   - brew tap grass-gis/grass-dev
   - brew tap osgeo/osgeo4mac
-  - brew tap homebrew/science
   - brew update
 
 install:
