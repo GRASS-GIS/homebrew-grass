@@ -46,10 +46,10 @@ class GrassTrunk < Formula
   depends_on "fftw"
   depends_on "python@2"
   depends_on "wxpython"
-  depends_on :postgresql => :optional
-  depends_on :mysql => :optional
+  depends_on "postgresql" => :optional
+  depends_on "mysql" => :optional
   depends_on "cairo"
-  depends_on :x11 # needs to find at least X11/include/GL/gl.h
+  depends_on "x11" # needs to find at least X11/include/GL/gl.h
   depends_on "openblas" => :optional
   depends_on "liblas" => :optional
   depends_on "netcdf" => :optional
