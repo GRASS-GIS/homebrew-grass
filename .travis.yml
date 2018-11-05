@@ -3,6 +3,7 @@
 language: minimal
 os: osx
 
+
 before_install:
   - brew update
   - brew tap grass-gis/grass-dev
@@ -13,7 +14,7 @@ before_script:
   - export CXX="g++-6" CC="gcc-6"
 
 script:
-  - brew install --HEAD
+  - travis_wait 30 brew install --HEAD
     --with-ffmpeg
     --with-liblas
     --with-mysql
@@ -21,7 +22,7 @@ script:
     --with-openblas
     --with-postgresql
     grass-trunk
-  - brew test -v grass-trunk
+  - travis_wait 30 brew test -v grass-trunk
   - brew info grass-trunk
   - brew uninstall grass-trunk
 
