@@ -22,6 +22,15 @@ script:
     --with-openblas
     --with-postgresql
     grass-trunk
+    --only-dependencies
+  - travis_wait 30 brew install --HEAD
+    --with-ffmpeg
+    --with-liblas
+    --with-mysql
+    --with-netcdf
+    --with-openblas
+    --with-postgresql
+    grass-trunk
   - travis_wait 30 brew test -v grass-trunk
   - brew info grass-trunk
   - brew uninstall grass-trunk
