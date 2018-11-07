@@ -1,4 +1,4 @@
-Ho,mebrew Recipie for GRASS TRUNK
+Homebrew Recipie for GRASS trunk
 ================
 Rainer M Krug <Rainer.Krug@uzh.ch>
 
@@ -6,8 +6,8 @@ Rainer M Krug <Rainer.Krug@uzh.ch>
 
 ---
 
-This [[http://brew.sh][homebrew]] Tap contains recipes to build grass trunk. They should be working, but nothing is guaranteed!
+This [homebrew](https://brew.sh) Tap contains recipes to build [GRASS trunk](https://grass.osgeo.org/development/svn/). They should be working, but nothing is guaranteed!
 
 All contributions are welcome.
 
-If you have questions, problems, suggestions, ... please use the issue tracker.
+If you have questions, problems, suggestions, etc, please use the issue tracker.
