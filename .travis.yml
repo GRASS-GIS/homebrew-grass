@@ -9,7 +9,7 @@ before_install:
   - brew tap grass-gis/grass-dev
   - brew tap osgeo/osgeo4mac
   - brew update
-  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rm -f /usr/local/include/c++ ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rm -f /usr/local/include/c++ ; fi
   - brew install gcc
 
 before_script:
