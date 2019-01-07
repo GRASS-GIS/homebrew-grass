@@ -27,7 +27,6 @@ script:
     --only-dependencies
   - travis_wait 30 brew install --HEAD
     --with-ffmpeg
-    --with-liblas
     --with-mysql
     --with-netcdf
     --with-openblas
