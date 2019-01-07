@@ -10,7 +10,7 @@ This [homebrew](https://brew.sh) Tap contains recipes to build [GRASS trunk](htt
 
 To use it, you have to first tap the repository:
 ```
-brew tap GRASS-GIS/Homebrew-grass-dev
+brew tap GRASS-GIS/homebrew-grass-dev
 ```
 
 after that, you can use
