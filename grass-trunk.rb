@@ -102,7 +102,7 @@ class GrassTrunk < Formula
       args << "--with-wxwidgets=#{Formula["wxmac"].opt_bin}/wx-config"
     end
 
-    args << "--enable-64bit" if MacOS.prefer_64_bit?
+    args << "--enable-64bit" # if MacOS.prefer_64_bit?
     args << "--with-macos-archs=#{MacOS.preferred_arch}"
 
     cairo = Formula["cairo"]
