@@ -17,7 +17,7 @@ before_script:
   - export CXX="g++-6" CC="gcc-6"
 
 script:
-  - travis_wait 30 brew install --HEAD
+  - travis_wait 60 brew install --HEAD
     --with-ffmpeg
     --with-liblas
     --with-mysql
@@ -26,14 +26,14 @@ script:
     --with-postgresql
     grass-trunk
     --only-dependencies
-  - travis_wait 30 brew install --HEAD
+  - travis_wait 60 brew install --HEAD
     --with-ffmpeg
     --with-mysql
     --with-netcdf
     --with-openblas
     --with-postgresql
     grass-trunk
-  - travis_wait 30 brew test -v grass-trunk
+  - travis_wait 60 brew test -v grass-trunk
   - brew info grass-trunk
   - brew uninstall grass-trunk
 
