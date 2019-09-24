@@ -3,6 +3,13 @@ THIS REPOSITORY IS OUTDATED AND NOT FUNCTIONAL ANYMORE
 Please use the https://github.com/OSGeo/homebrew-osgeo4mac tap and the formulas in it to install grass from there.
 
 
+
+````
+brew install --HEAD osgeo-grass 
+````
+
+should install grass from the master branch on github.
+
 Homebrew Recipie for GRASS trunk
 ================
 Rainer M Krug <Rainer.Krug@uzh.ch>
